@@ -7,7 +7,7 @@
     <style>
         body, html { margin: 0; padding: 0; font-family: sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* GIAI ĐOẠN 1: TRANG CHÀO (Màn hình đầu tiên) */
+        /* GIAI ĐOẠN 1: TRANG CHÀO */
         .welcome-screen {
             height: 100vh;
             display: flex;
@@ -17,6 +17,7 @@
             background-image: url('hinh-minh-hoa-do-an-nhanh-va-do-ngot-hoat-hinh_123891-78483.avif');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             color: white;
             text-align: center;
         }
@@ -30,7 +31,7 @@
             border-radius: 50px;
             transition: 0.3s;
             cursor: pointer;
-            
+            background: white;
         }
         .btn-enter:hover { color: #ffffff; background: transparent; }
         .arrow { font-size: 40px; margin-top: 20px; animation: bounce 2s infinite; }
@@ -44,25 +45,29 @@
             justify-content: center;
         }
         .card {
-            background: white;
+            /* THAY ĐỔI: Nền Gradient cho khung nội dung */
+            background: linear-gradient(135deg, #95edd5 0%, #e0e7ff 100%);
             width: 100%;
             max-width: 500px;
             border-radius: 20px;
             padding: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        video, audio, iframe { width: 100%; border-radius: 12px; margin-top: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .section { margin-bottom: 30px; }
-        label { font-weight: bold; color: #444; display: block; margin-bottom: 8px; }
         
-        /* Form phản hồi */
-        textarea { width: 100%; height: 100px; border-radius: 8px; border: 1px solid #ddd; padding: 10px; box-sizing: border-box; }
-        button[type="submit"] {
-            width: 100%; background: #28a745; color: white; border: none; 
-            padding: 15px; border-radius: 8px; font-weight: bold; margin-top: 10px; cursor: pointer;
+        /* Định dạng cho ảnh minh họa thay thế audio */
+        .image-placeholder {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+            display: block;
         }
 
-        /* Hiệu ứng mũi tên nhảy */
+        iframe { width: 100%; border-radius: 12px; margin-top: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .section { margin-bottom: 30px; }
+        label { font-weight: bold; color: #444; display: block; margin-bottom: 8px; }
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
             40% {transform: translateY(-15px);}
@@ -79,35 +84,32 @@
 
     <div id="main-content" class="content-screen">
         <div class="card">
-            <h2 style="text-align: center; margin-top: 0;">Nội dung của tôi</h2>
+            <h2 style="text-align: center; margin-top: 0; color: #1e3a8a; font-weight: bold;color: #000000;">TÊN CÁC VẬT THỂ</h2>
 
-           <iframe 
+            <iframe 
                 width="100%" 
-                height="500" 
+                height="300" 
                 src="https://www.youtube.com/embed/8sGSfmcnARg" 
                 frameborder="0" 
                 allowfullscreen>
-        </iframe>
+            </iframe>
 
-           <div class="section">
-    <label>🎵 Nghe bản ghi âm:</label>
-    <audio controls style="width: 100%;">
-      <source src="https://docs.google.com/uc?export=download&id=1yU7xLRF4HrBX2NXAcZNh9myYM-7ZY_qC" type="audio/mp4">
-    </audio>
-</div>
+            <div class="section">
+                <label style="text-align: center;">🖼️ Hình ảnh minh họa</label>
+                <img src="./hinh-minh-hoa-do-an-nhanh-va-do-ngot-hoat-hinh_123891-78483.avif" alt="Ảnh minh họa" class="image-placeholder">
+            </div>
 
-           <div class="section">
-    <label>✍️ Giúp Tôi Nhé </label>
-    <a href="https://forms.gle/DTXHziFCDwDvTrL27" target="_blank" style="text-decoration: none;">
-        <button type="button" style="width: 100%; background: #28a745; color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer;">
-            GỬI PHẢN HỒI
-        </button>
-    </a>
-</div>
+            <div class="section">
+                <label style="text-align: center;">✍️ Giúp Tôi Nhé </label>
+                <a href="https://forms.gle/DTXHziFCDwDvTrL27" target="_blank" style="text-decoration: none;">
+                    <button type="button" style="width: 100%; background: #28a745; color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                        GỬI PHẢN HỒI
+                    </button>
+                </a>
+            </div>
+            
+            <p style="text-align: center; font-size: 12px; color: #aaa;">&copy; Sinh viên Trường Đại học Khoa học Huế</p>
+        </div> 
+    </div> 
 </body>
-
 </html>
-
-
-
-
