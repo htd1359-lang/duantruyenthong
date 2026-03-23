@@ -14,7 +14,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-image: url('./image/bgr.png'); 
+            background-image: url('./hinhanh/bgr.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -177,7 +177,7 @@
             <h2 style="text-align: center; margin-top: 0; color: #000; font-weight: bold; font-size: 24px; margin-bottom: 20px;">CĂN TIN NÓI NHỎ</h2>
             
             <div class="video-local-container">
-                <video controls poster="./image/6b4d0fbf-d975-4e2e-9012-eca2f8d3c07e.jpg">
+                <video controls poster="./hinhanh/6b4d0fbf-d975-4e2e-9012-eca2f8d3c07e.jpg">
                     <source src="./video/Căn Tin Nói Nhỏ.mov" type="video/mp4">
                     Trình duyệt của bạn không hỗ trợ xem video.
                 </video>
@@ -189,7 +189,7 @@
                     <button class="btn-select active" onclick="changeImage('mon-an', this)">Đồ Ăn</button>
                     <button class="btn-select" onclick="changeImage('nuoc-uong', this)">Thức Uống</button>
                 </div>
-                <img id="main-image" src="./image/doan.png" alt="Thực đơn" class="image-placeholder">
+                <img id="main-image" src="./hinhanh/doan.png" alt="Thực đơn" class="image-placeholder">
             </div>
 
             <div class="section" style="background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.7);">
@@ -218,9 +218,9 @@
             img.style.opacity = 0;
             setTimeout(() => {
                 if (type === 'mon-an') {
-                    img.src = 'image/doan.png';
+                    img.src = 'hinhanh/doan.png';
                 } else if (type === 'nuoc-uong') {
-                    img.src = 'image/6b4d0fbf-d975-4e2e-9012-eca2f8d3c07e.jpg'; 
+                    img.src = 'hinhanh/6b4d0fbf-d975-4e2e-9012-eca2f8d3c07e.jpg'; 
                 }
                 img.style.opacity = 1;
             }, 300);
