@@ -2,232 +2,215 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khu Tự Học - Trạm Dừng Chia Sẻ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRẠM DỪNG CHIA SẺ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        
-        /* GIAI ĐOẠN 1: TRANG CHÀO */
-        .welcome-screen {
-            height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #000;
+        }
+
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Quay lại tông màu Tím - Xanh dương đặc trưng */
+            background: linear-gradient(135deg, #66baea 0%, #764ba2 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .mobile-wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background-image: url('./image/bgr.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            min-height: 100vh;
+            padding: 40px 20px;
             color: white;
-            text-align: center;
-            position: relative;
         }
 
-        .cloud-btn-container {
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            padding: 20px; 
-        }
-
-        .cloud-btn-container:hover { transform: scale(1.05); }
-
-        .cloud-base {
-            width: 150px;
-            height: 60px;
-            background: white;
-            border-radius: 50px;
-            position: relative;
+        .header-section {
             display: flex;
-            justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            margin-bottom: 40px;
         }
 
-        .cloud-base::before, .cloud-base::after {
-            content: '';
-            position: absolute;
+        .logo-frame {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            padding: 3px;
             background: white;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: pulse 3s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            70% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 50%;
         }
 
-        .cloud-base::before { width: 70px; height: 70px; top: -35px; left: 20px; }
-        .cloud-base::after { width: 90px; height: 90px; top: -50px; right: 15px; }
-
-        .btn-enter-text {
-            font-size: 22px;
-            font-weight: bold;
-            color: rgb(78, 209, 144);
-            text-decoration: none;
-            position: relative;
-            z-index: 10;
-            letter-spacing: 1px;
+        .project-title {
+            text-align: left;
+            font-weight: 800;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        .arrow { 
-            font-size: 40px; 
-            margin-top: 30px; 
-            animation: bounce 2s infinite; 
-            color: white;
-            position: relative;
-            z-index: 5;
-        }
-        
-        /* GIAI ĐOẠN 2: NỘI DUNG CHÍNH */
-        .content-screen {
-            min-height: 100vh;
-            padding: 40px 20px;
-            background: #f4f4f9;
-            display: flex;
-            justify-content: center;
-        }
-        .card {
-            background: linear-gradient(135deg, #95edd5 0%, #e0e7ff 100%);
-            width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* KHUNG VIDEO TỐI ƯU */
-        .video-local-container {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 25px;
-            background: #000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-
-        video { width: 100%; display: block; outline: none; }
-        
-        .selection-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            justify-content: center;
-        }
-        .btn-select {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #0f828a;
-            background: white;
-            color: #0f828a;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            font-size: 15px;
-        }
-        .btn-select.active { background: #0f828a; color: white; }
-
-        .image-placeholder {
-            width: 100%;
-            border-radius: 12px;
-            margin-top: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            object-fit: cover;
+        .project-title span {
+            font-weight: 400;
+            font-size: 0.9rem;
             display: block;
-            transition: opacity 0.3s ease-in-out;
+            opacity: 0.8;
         }
 
-        .section { margin-bottom: 30px; }
-        label { font-weight: bold; color: #444; display: block; margin-bottom: 12px; font-size: 16px; }
-
-        .rating { display: flex; flex-direction: row-reverse; justify-content: center; margin-bottom: 15px; }
-        .rating input { display: none; }
-        .rating label { cursor: pointer; width: 40px; font-size: 35px; color: #e6e6e6; transition: 0.3s; }
-        .rating label:before { content: '★'; }
-        .rating input:checked ~ label { color: #ffca08; }
-        .rating label:hover, .rating label:hover ~ label { color: #ffca08; }
-
-        textarea {
-            width: 100%; height: 100px; padding: 12px; border-radius: 8px; border: 1px solid #ddd;
-            font-family: inherit; resize: none; box-sizing: border-box; outline: none; font-size: 14px;
+        /* Menu */
+        .nav-menu {
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .btn-submit {
-            width: 100%; background: #0f828a; color: white; border: none; padding: 15px;
-            border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px;
-            transition: 0.3s; font-size: 16px;
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            /* Thêm transition để hover mượt mà */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .btn-submit:hover { background: #0b6369; transform: translateY(-2px); }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-15px);}
-            60% {transform: translateY(-7px);}
+        /* HIỆU ỨNG HOVER */
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px); /* Bay lên nhẹ */
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .nav-item:active {
+            transform: scale(0.95);
+        }
+
+        .icon {
+            margin-right: 12px;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hiệu ứng icon khi hover */
+        .nav-item:hover .icon {
+            transform: scale(1.2);
+        }
+
+        /* Fanpage Link */
+        .fanpage-link {
+            margin-top: 25px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(24, 119, 242, 0.4);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .fanpage-link:hover {
+            background: rgba(24, 119, 242, 0.7);
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 40px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            font-weight: 400;
         }
     </style>
 </head>
 <body>
-
-    <div class="welcome-screen">
-        <div class="cloud-btn-container" onclick="document.getElementById('main-content').scrollIntoView();">
-            <div class="cloud-base">
-                <span class="btn-enter-text">VÀO ĐÂY</span>
+    <div class="background-gradient"></div>
+    
+    <main class="mobile-wrapper">
+        <div class="header-section">
+            <div class="logo-frame">
+                <img src="image/logo.jpg" alt="Logo" class="logo">
             </div>
+            <h1 class="project-title">TRẠM DỪNG CHIA SẺ<br><span>Đồ án Truyền thông HUSC</span></h1>
         </div>
-        <div class="arrow">↓</div>
-    </div>
 
-    <div id="main-content" class="content-screen">
-        <div class="card">
-            <h2 style="text-align: center; margin-top: 0; color: #000; font-weight: bold; font-size: 24px; margin-bottom: 20px;">CĂN TIN NÓI NHỎ</h2>
-            
-            <div class="video-local-container">
-                <video controls poster="./image/logo.jpg">
-                    <source src="./video/Căn Tin Nói Nhỏ.mov" type="video/mp4">
-                    Trình duyệt của bạn không hỗ trợ xem video.
-                </video>
-            </div>
+        <nav class="nav-menu">
+            <a href="gheda.html" class="nav-item">
+                <span class="icon">🪑</span> Ghế Đá Kể Chuyện
+            </a>
+            <a href="thuvien.html" class="nav-item">
+                <span class="icon">📚</span> Thư Viện Thì Thầm
+            </a>
+            <a href="khutuhoc.html" class="nav-item">
+                <span class="icon">📖</span> Khu Tự Học Đồng Hành
+            </a>
+            <a href="cantin.html" class="nav-item">
+                <span class="icon">☕</span> Căn Tin Nói Nhỏ
+            </a>
+        </nav>
 
-            <div class="section">
-                <label style="text-align: center; font-size: 18px;">🍱 Thực đơn hôm nay</label>
-                <div class="selection-group">
-                    <button class="btn-select active" onclick="changeImage('mon-an', this)">Đồ Ăn</button>
-                    <button class="btn-select" onclick="changeImage('nuoc-uong', this)">Thức Uống</button>
-                </div>
-                <img id="main-image" src="./image/doan.png" alt="Thực đơn" class="image-placeholder">
-            </div>
+        <a href="https://www.facebook.com/profile.php?id=61582760764871" target="_blank" class="fanpage-link">
+            <i class="fa-brands fa-facebook-f"></i> Ghé thăm Fanpage của chúng mình
+        </a>
 
-            <div class="section" style="background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.7);">
-                <form action="https://formspree.io/f/mlgpoqzw" method="POST">
-                    <label style="text-align: center; font-size: 20px; margin-bottom: 5px; color: #0f828a;">✍️ Giúp Tôi Nhé</label>
-                    <p style="text-align: center; margin: 0 0 15px 0; font-size: 14px; color: #555;">Hãy góp ý để hoàn thiện hơn mỗi ngày!</p>
-                    <div class="rating">
-                        <input type="radio" name="Danh_Gia_Sao" value="5" id="star5" required><label for="star5"></label>
-                        <input type="radio" name="Danh_Gia_Sao" value="4" id="star4"><label for="star4"></label>
-                        <input type="radio" name="Danh_Gia_Sao" value="3" id="star3"><label for="star3"></label>
-                        <input type="radio" name="Danh_Gia_Sao" value="2" id="star2"><label for="star2"></label>
-                        <input type="radio" name="Danh_Gia_Sao" value="1" id="star1"><label for="star1"></label>
-                    </div>
-                    <textarea name="Y_Kien_Dong_Gop" placeholder="Nhập nhận xét của bạn..." required></textarea>
-                    <button type="submit" class="btn-submit">GỬI PHẢN HỒI NGAY</button>
-                </form>
-            </div>
-            
-            <p style="text-align: center; font-size: 12px; color: #666; margin-top: 25px;">&copy; Sinh viên Trường Đại học Khoa học Huế<br>Dự án: Trạm Dừng Chia Sẻ</p>
-        </div> 
-    </div> 
+        <footer>
+            <p>© Sinh Viên Đại Học Khoa Học Huế</p>
+        </footer>
+    </main>
 
-    <script>
-        function changeImage(type, element) {
-            const img = document.getElementById('main-image');
-            img.style.opacity = 0;
-            setTimeout(() => {
-                if (type === 'mon-an') {
-                    img.src = 'image/doan.png';
-                } else if (type === 'nuoc-uong') {
-                    img.src = 'image/nuoc.png'; 
-                }
-                img.style.opacity = 1;
-            }, 300);
-            const buttons = document.querySelectorAll('.btn-select');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-        }
-    </script>
+    <script src="https://kit.fontawesome.com/582a72f652.js" crossorigin="anonymous"></script>
 </body>
 </html>
