@@ -19,24 +19,33 @@
             background-color: #000;
         }
 
-        .background-gradient {
+        /* --- CHỈNH SỬA PHẦN NÀY --- */
+        .background-image {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            /* Quay lại tông màu Tím - Xanh dương đặc trưng */
-            background: linear-gradient(135deg, #66baea 0%, #764ba2 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 10s ease infinite;
+            /* Thay đổi đường dẫn ảnh của bạn tại đây */
+            background: url('./image/bgr.png') no-repeat center center;
+            background-size: cover;
+            /* Hiệu ứng làm mờ và làm tối để nổi bật nội dung */
+            filter: blur(10px) brightness(0.6); 
+            transform: scale(1.1); /* Phóng to nhẹ để không lộ mép trắng khi blur */
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Lớp phủ màu bổ trợ (giữ tông màu cũ của bạn nhưng mờ hơn) */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(102, 186, 234, 0.2) 0%, rgba(118, 75, 162, 0.3) 100%);
         }
+        /* -------------------------- */
 
         .mobile-wrapper {
             display: flex;
@@ -97,7 +106,6 @@
             opacity: 0.8;
         }
 
-        /* Menu */
         .nav-menu {
             width: 100%;
             max-width: 350px;
@@ -112,20 +120,19 @@
             padding: 18px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             color: white;
             text-decoration: none;
             font-weight: 600;
-            /* Thêm transition để hover mượt mà */
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* HIỆU ỨNG HOVER */
         .nav-item:hover {
             background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px); /* Bay lên nhẹ */
+            transform: translateY(-3px);
             border-color: rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
@@ -140,12 +147,10 @@
             transition: transform 0.3s ease;
         }
 
-        /* Hiệu ứng icon khi hover */
         .nav-item:hover .icon {
             transform: scale(1.2);
         }
 
-        /* Fanpage Link */
         .fanpage-link {
             margin-top: 25px;
             text-decoration: none;
@@ -173,11 +178,13 @@
             font-size: 0.8rem;
             opacity: 0.7;
             font-weight: 400;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="background-gradient"></div>
+    <div class="background-image"></div>
+    <div class="background-overlay"></div>
     
     <main class="mobile-wrapper">
         <div class="header-section">
